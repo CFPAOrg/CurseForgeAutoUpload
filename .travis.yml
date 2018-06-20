@@ -8,10 +8,10 @@ script:
 
 deploy:
   provider: pages
-  local-dir: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  target-branch: gh-pages
+  target-branch: master
+  name: baka943
   on:
     branch: master
