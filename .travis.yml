@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+
+script:
+- git clone https://github.com/CFPAOrg/Minecraft-Mod-Language-Package.git
+- python3 main.py
+
+deploy:
+  provider: pages
+  local-dir: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  target-branch: gh-pages
+  on:
+    branch: master
