@@ -1,2 +1,2 @@
 # CurseForgeAutoUpload
-自动化实现资源包更新上传，再也不用手动操心了
+利用 CurseForge 提供的 api，实现每周定时上传，从而大幅度减少人工上传带来的问题
