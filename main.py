@@ -51,6 +51,8 @@ def zip(path='.', version=''):
             continue
         # 剔除 en_us
         os.system('rm -f {}/project/assets/{}/lang/en_us.lang'.format(path, modid))
+        # 剔除 en_us_old
+        os.system('rm -f {}/project/assets/{}/lang/en_us_old.lang'.format(path, modid))
         # 再剔除 zh_cn_old
         os.system(
             'rm -f {}/project/assets/{}/lang/zh_cn_old.lang'.format(path, modid))
