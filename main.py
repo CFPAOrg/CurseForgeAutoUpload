@@ -70,16 +70,30 @@ def zip(path='.', version=''):
     os.system('rm -rf ./pack.png')
     os.system('rm -rf ./pack.mcmeta')
 
-
+def get_file():
+    request = Request('https://api.github.com/repos/CFPAOrg/Minecraft-Mod-Language-Package/releases/latest')
+    response_body_bytes = urlopen(request).read()
+    response_body_str = str(response_body_bytes, 'utf-8')
+    cache_json = json.loads(response_body_str)
+    url = cache_json['assets'][0]["browser_download_url"]
+    os.system("wget {}".format(url))
+    
+    
 if __name__ == '__main__':
     # 获取 +1 的版本信息
     version_in = version_add(version_get(), 0, 0, 1)
 
     # 打包
-    zip(path='Minecraft-Mod-Language-Package', version=version_in)
+    #zip(path='Minecraft-Mod-Language-Package', version=version_in)
 
-    # 上传
+    # 重命名
+    print("下载最新文件……")
+    get_file()
+    print("下载完成")
     file = 'Minecraft-Mod-Language-Package-{}.zip'.format(version_in)
+    os.rename("Minecraft-Mod-Language-Package.zip",file)
+    print("重命名完成")
+    # 上传
     display = 'Minecraft-Mod-Language-Package-{}'.format(version_in)
     log = '自动更新，本次更新时间：{}'.format(time.strftime(
         "%Y-%m-%d %H:%M:%S", time.localtime()))
