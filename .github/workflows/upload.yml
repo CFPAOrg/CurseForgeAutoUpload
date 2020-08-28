@@ -34,5 +34,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Upload
         run: |
-          echo Upload!
           python3 main.py ${{secrets.CF_TOKEN}}
+          
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Deploy to CurseForge." -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
