@@ -2,6 +2,7 @@
 from urllib.request import Request, urlretrieve
 from urllib.request import urlopen
 
+import sys
 import os
 import time
 import json
@@ -11,7 +12,7 @@ import requests
 
 # 文件上传请求
 def upload(file_name='', display_name='', changelog=''):
-    header = {'X-Api-Token': os.getenv('CFTOKEN')}
+    header = {'X-Api-Token': sys.argv[1]}  # os.getenv('CFTOKEN')
     meta = {'metadata': json.dumps({"displayName": display_name, "changelog": changelog, "gameVersions": [
                                    6756], "releaseType": "release"}, ensure_ascii=False)}
 

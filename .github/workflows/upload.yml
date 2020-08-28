@@ -35,4 +35,4 @@ jobs:
       - name: Upload
         run: |
           echo Upload!
-          python3 main.py
+          python3 main.py ${{secrets.CF_TOKEN}}
