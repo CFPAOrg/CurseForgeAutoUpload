@@ -2,6 +2,7 @@
 from urllib.request import Request, urlretrieve
 from urllib.request import urlopen
 
+import paramiko
 import sys
 import os
 import time
@@ -86,6 +87,13 @@ def get_file():
     url = cache_json['assets'][0]["browser_download_url"]
     return url
 
+def scp_file()
+    ssh = paramiko.SSHClient()
+    ssh.load_system_host_keys()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.connect(sys.argv[2], port=12356, username=root, password=sys.argv[3])
+    with closing(Read(ssh_client.get_transport(), '/var/www/html/files/')) as scp:
+        scp.receive('Minecraft-Mod-Language-Modpack.zip')
 
 if __name__ == '__main__':
     # 获取 +1 的版本信息
@@ -95,11 +103,10 @@ if __name__ == '__main__':
     #zip(path='Minecraft-Mod-Language-Package', version=version_in)
     # 重命名
     print("下载最新文件……")
-    fileurl = get_file()
-    urlretrieve(fileurl, "Minecraft-Mod-Language-Package.zip")
+    scp_file()
     print("下载完成")
     file = 'Minecraft-Mod-Language-Package-{}.zip'.format(version_in)
-    os.rename("Minecraft-Mod-Language-Package.zip", file)
+    os.rename("Minecraft-Mod-Language-Modpack.zip", file)
     print("重命名完成")
 
     # 上传
