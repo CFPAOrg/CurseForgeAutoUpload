@@ -34,7 +34,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Upload
         run: |
-          python3 main.py ${{secrets.CF_TOKEN}}
+          python3 main.py ${{secrets.CF_TOKEN}} ${{secrets.SSH_IP}} ${{secrets.SSH_PWD}}
           
       - name: Commit files
         run: |
